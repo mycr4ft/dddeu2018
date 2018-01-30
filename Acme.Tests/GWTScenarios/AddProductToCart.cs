@@ -27,7 +27,7 @@ namespace Acme.Tests
             var sku = "";
             var productId = "";
 
-            new Scenario()
+            new Scenario("MultipleProductsAddedToCart")
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
