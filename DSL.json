@@ -1,0 +1,46 @@
+{
+  "Events": {
+    "CustomerStartedShopping": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "ProductWasAddedToCart": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "ProductWasRemovedFromCart": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "CustomerPlacedOrder": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "CustomerAbandonedCart": {
+      "customerId": "string",
+      "cartId": "integer"
+    }
+  },
+  "Commands": {
+    "StartShopping": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "AddProductToCart": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "RemoveProductFromCart": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "PlaceOrder": {
+      "customerId": "string",
+      "cartId": "integer"
+    },
+    "AbandonOrder": {
+      "customerId": "string",
+      "cartId": "integer"
+    }
+  }
+}
