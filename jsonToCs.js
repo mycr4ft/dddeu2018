@@ -14,7 +14,7 @@ const dslTypeToCs = (type) => {
 
 const createAttribute = (key, json) => {
     const type = dslTypeToCs(json);
-    return `public ${type} ${key} {get; set;}`;
+    return `public ${type} ${key} {get;}`;
 }
 
 
@@ -23,6 +23,26 @@ const createAttributes = (json) => {
         return createAttribute(key, json[key]);
     });
     return attributes.join("\n");
+}
+
+const createConstructor = (json, name) => {
+    let result = "";
+    result += `public ${name} (`;
+    const createConstructorArgument = (name, type) => {
+        type = dslTypeToCs(type);
+        return `${type} ${name}Arg`;
+    }
+    const attributes = Object.keys(json).map((key) => {
+        return createConstructorArgument(key, json[key]);
+    });
+    result += attributes.join(", ");
+    result += `) {`;
+    const constructorBody = Object.keys(json).map((key) => {
+        return `${key} = ${key}Arg;`;
+    }).join("\n");
+    result += constructorBody;
+    result += `}\n`;
+    return result;
 }
 
 const createMessage = (key, json, type) => {
@@ -42,6 +62,7 @@ const createMessage = (key, json, type) => {
         cs += `public class ${key}: Event {`;
     }
     cs += createAttributes(json);
+    cs += createConstructor(json, key);
     cs += `}}`
     return cs;
 }

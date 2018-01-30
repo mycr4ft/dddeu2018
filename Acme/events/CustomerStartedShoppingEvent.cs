@@ -4,5 +4,7 @@ Do not touch or risk the wrath of the ECUs
 This Event was generated from DSL.json
 */
 using Acme.Events;
-namespace Acme.Events {public class CustomerStartedShopping: Event {public string customerId {get; set;}
-public string cartId {get; set;}}}
+namespace Acme.Events {public class CustomerStartedShopping: Event {public string customerId {get;}
+public string cartId {get;}public CustomerStartedShopping (string customerIdArg, string cartIdArg) {customerId = customerIdArg;
+cartId = cartIdArg;}
+}}

@@ -29,7 +29,9 @@
     },
     "AddProductToCart": {
       "customerId": "string",
-      "cartId": "string"
+      "cartId": "string",
+      "sku": "string",
+      "addTime": "string"
     },
     "RemoveProductFromCart": {
       "customerId": "string",
