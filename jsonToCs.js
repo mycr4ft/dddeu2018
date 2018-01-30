@@ -34,11 +34,10 @@ const createMessage = (key, json, type) => {
     cs += `*/`;
     if (type === "Command") {
         cs += `namespace Acme.Command.${key} {`;
-        cs += `public class ${key}Command {`;
     } else {
         cs += `namespace Acme.Event.${key} {`;
-        cs += `public class ${key}Event {`;
     }
+    cs += `public class ${key} {`;
     cs += createAttributes(json);
     cs += `}}`
     return cs;
