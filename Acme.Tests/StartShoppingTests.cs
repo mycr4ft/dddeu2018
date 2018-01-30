@@ -14,7 +14,7 @@ namespace Acme.Tests
             var startTime = "";
 
             new Scenario()
-                .When(new StartShopping (cartId,customerId,startTime))
+                .When(new StartShopping(cartId,customerId,startTime))
                 .Then(new CustomerStartedShopping(cartId, customerId))
                 .Assert();
         }

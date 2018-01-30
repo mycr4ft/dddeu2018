@@ -69,9 +69,9 @@ const createMessage = (key, json, type) => {
 
 const createPath = (key, type) => {
     if (type === "Event") {
-        return `./Acme/events/${key}Event.cs`;
+        return `./Acme/Events/${key}Event.cs`;
     } else {
-        return `./Acme/commands/${key}Command.cs`;
+        return `./Acme/Commands/${key}Command.cs`;
     }
 }
 const writeMessage = (content, path) => {
