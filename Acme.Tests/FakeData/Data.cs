@@ -7,5 +7,7 @@
 
         public static string HappyCartId = "Happy cart";
         public static string GrumpyCartId = "Grumpy cart";
+
+        public static string HappyOrdId = "Happy order";
     }
 }

@@ -12,7 +12,7 @@ namespace Acme.Tests
         {
             var productId = "";
 
-            new Scenario()
+            new Scenario("NothingCouldBeRemovedFromCard")
                 .When(new RemoveProductFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .ThenNothing()
                 .Assert();
@@ -23,7 +23,7 @@ namespace Acme.Tests
         {
             var productId = "";
 
-            new Scenario()
+            new Scenario("OneThingRemovedFromCart")
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .When(new RemoveProductFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Then(new ProductWasRemovedFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))

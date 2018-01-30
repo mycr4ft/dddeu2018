@@ -13,8 +13,7 @@ namespace Acme.Tests
             var startTime = "";
             var sku = "";
             var productId = "";
-
-            new Scenario()
+            new Scenario("FirstProductWasAddedToCart")
                 .When(new AddProductToCart(Data.HappyCustomerId, Data.HappyCartId, sku, startTime))
                 .Then(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Assert();
@@ -26,7 +25,6 @@ namespace Acme.Tests
             var startTime = "";
             var sku = "";
             var productId = "";
-
             new Scenario("MultipleProductsAddedToCart")
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))

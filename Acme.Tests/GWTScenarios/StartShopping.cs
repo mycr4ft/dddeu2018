@@ -12,7 +12,7 @@ namespace Acme.Tests
         {
             var startTime = "";
 
-            new Scenario()
+            new Scenario("CustomerStartedShopping")
                 .When(new Commands.StartShopping(Data.HappyCartId,Data.HappyCustomerId,startTime))
                 .Then(new CustomerStartedShopping(Data.HappyCartId, Data.HappyCustomerId))
                 .Assert();
@@ -23,7 +23,7 @@ namespace Acme.Tests
         {
             var startTime = "";
 
-            new Scenario()
+            new Scenario("CustomerStartedShoppingTwice")
                 .Given(new CustomerStartedShopping(Data.HappyCartId, Data.HappyCustomerId))
                 .When(new Commands.StartShopping(Data.HappyCartId, Data.HappyCustomerId, startTime))
                 .ThenNothing()

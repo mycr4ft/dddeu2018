@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Acme.Commands;
 using Acme.Events;
+using Xunit;
 
 namespace Acme.Tests
 {
@@ -71,7 +72,7 @@ namespace Acme.Tests
                 new Step
                 {
                     Title = "Nothing",
-                    Type = "HotSpot",
+                    Type = "Hotspot",
                     Data = new Dictionary<string, string>()
 
                 });
@@ -81,6 +82,7 @@ namespace Acme.Tests
         public void Assert()
         {
             GenerateHtml.Generate(_name, _steps);
+            Xunit.Assert.True(false);
         }
     }
 }
