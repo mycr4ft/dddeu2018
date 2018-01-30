@@ -1,22 +1,9 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace Acme.Tests
-{
-    public static class GenerateHtml
-    {
-        public static void Generate(string scenario, IEnumerable<Step> steps)
-        {
-            var builder = new StringBuilder();
-            foreach (var step in steps)
-            {
-                builder.AppendLine(@"<!DOCTYPE html>
-<html lang='en'>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset='UTF-8' />
+    <meta charset="UTF-8" />
     <title>Acme.OnlineShop.PlaceOrder - Ignore PlaceOrder when CustomerPlacedOrder already</title>
-    <style type='text/css'>
+    <style type="text/css">
       /* enough.css @link https://github.com/jeffkreeftmeijer/enough.css */
 
       body {
@@ -62,7 +49,7 @@ namespace Acme.Tests
         padding: 0.5em;
       }
     </style>
-    <style type='text/css'>
+    <style type="text/css">
       /* (c) Marijn Huizendveld 2018. All rights reserved. */
 
       html, body {
@@ -71,7 +58,7 @@ namespace Acme.Tests
       }
 
       body {
-        font-family: 'Marker Felt', fantasy, 'Comic Sans MS';
+        font-family: "Marker Felt", fantasy, "Comic Sans MS";
         max-width: none;
         background-color: saddlebrown;
       }
@@ -166,43 +153,47 @@ namespace Acme.Tests
       }
     </style>
   </head>
-  <body class='like-paper'>
-    <article class='scenario'>");
-                builder.AppendLine($"<div class='sticky like-paper'><h2 class='{@step.Type}'>{@step.Title}</h2>");
-                builder.AppendLine($"</div>");
-                builder.AppendLine($"</body></html>");
-              
-              
-              builder.AppendLine(@"</article><script type='application/javascript'>
-              document.addEventListener('DOMContentLoaded', function () {
-                var tableHeaders = document.querySelectorAll('tr[class] th');
+  <body class="like-paper">
+    <article class="scenario"><div class="sticky like-paper">
+  <h2>Acme.OnlineShop.PlaceOrder</h2>
+  <p>Ignore PlaceOrder when CustomerPlacedOrder already</p>
+</div>
+<div class="hotspot sticky like-paper">
+  <h2>No preconditions</h2>
+  <p>This scenario is completely autonomous</p>
+</div>
+<div class="hotspot sticky like-paper">
+  <h2>No command</h2>
+  <p>This scenario is likely incomplete</p>
+</div>
+<div class="hotspot sticky like-paper">
+  <h2>No outcome specified</h2>
+  <p>If this is desired change your test to use `thenNothing` to signal explicitly that nothing should happen.</p>
+</div></article>
+    <script type="application/javascript">
+      document.addEventListener('DOMContentLoaded', function () {
+          var tableHeaders = document.querySelectorAll('tr[class] th');
 
-                for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
-                  tableHeader = tableHeaders.item(i);
-                  tableHeader.addEventListener('click', function () {
-                    var highlights = document.querySelectorAll('.highlight');
+          for (var i = 0, tableHeader; i < tableHeaders.length; i++) {
+              tableHeader = tableHeaders.item(i);
+              tableHeader.addEventListener('click', function () {
+                  var highlights = document.querySelectorAll('.highlight');
 
-                    for (var j = 0, highlight; j < highlights.length; j++) {
+                  for (var j = 0, highlight; j < highlights.length; j++) {
                       highlight = highlights.item(j);
                       highlight.classList.remove('highlight');
-                    }
+                  }
 
-                    var search = this.parentNode.classList.item(0);
-                    var matches = document.querySelectorAll('.' + search);
+                  var search = this.parentNode.classList.item(0);
+                  var matches = document.querySelectorAll('.' + search);
 
-                    for (var k = 0, match; k < matches.length; k++) {
+                  for (var k = 0, match; k < matches.length; k++) {
                       match = matches.item(k);
                       match.classList.add('highlight');
-                    }
-                  });
-                }
-              }, false);
-              </script>
-                </body>
-                </html>
-                ");
-            }
-            File.WriteAllText($"../../../Html/{@scenario}.html", builder.ToString());
-        }
-    }
-}
+                  }
+              });
+          }
+      }, false);
+    </script>
+  </body>
+</html>
