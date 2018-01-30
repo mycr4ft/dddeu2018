@@ -1,0 +1,11 @@
+[{
+  "C: StartShopping": {
+    "customerId": 1,
+    "cartId": 2,
+    "startTime": "10:00"
+  },
+  "E: CustomerStartedShopping": {
+    "customerId": 1,
+    "cartId": 2
+  }
+]
