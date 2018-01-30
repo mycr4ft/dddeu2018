@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Acme\Acme.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="DSL.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
