@@ -21,6 +21,11 @@ namespace Acme.Tests
             return this;
         }
 
+        public Scenario ThenNothing()
+        {
+            return this;
+        }
+
         public void Assert()
         {
             throw new NotImplementedException();

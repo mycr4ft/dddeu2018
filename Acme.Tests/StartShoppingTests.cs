@@ -19,10 +19,18 @@ namespace Acme.Tests
                 .Assert();
         }
 
+        [Fact]
         public void CustomerStartedShoppingTwice()
         {
-   
-        }
+            var cartId = "";
+            var customerId = "";
+            var startTime = "";
 
+            new Scenario()
+                .Given(new CustomerStartedShopping(cartId, customerId))
+                .When(new StartShopping(cartId, customerId, startTime))
+                .ThenNothing()
+                .Assert();
+        }
     }
 }
