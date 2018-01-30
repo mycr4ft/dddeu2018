@@ -4,7 +4,7 @@ namespace Acme.Tests
 {
     public static class GenerateHtml
     {
-        public static void Generate(IEnumerable<Step> steps)
+        public static void Generate(string scenario, IEnumerable<Step> steps)
         {
             
         }
