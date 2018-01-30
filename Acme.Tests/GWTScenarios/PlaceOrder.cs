@@ -8,10 +8,10 @@ using Xunit;
 
 namespace Acme.Tests
 {
-    public class PlaceOrderTests
+    public class PlaceOrderOnCart
     {
         [Fact]
-        public void PlaceOrder()
+        public void PlaceOrderOnExistingCart()
         {
             string orderId= "";
 
