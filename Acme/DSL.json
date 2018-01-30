@@ -1,11 +1,45 @@
-[{
-  "C: StartShopping": {
-    "customerId": 1,
-    "cartId": 2,
-    "startTime": "10:00"
+{
+  "Events": {
+    "CustomerStartedShopping": {
+      "customerId": 1,
+      "cartId": 2
+    },
+    "ProductWasAddedToCart": {
+      "customerId": 1,
+      "cartId": 2
+    },
+    "ProductWasRemovedFromCart": {
+      "customerId": 1,
+      "cartId": 2
+    },
+    "CustomerPlacedOrder": {
+      "customerId": 1,
+      "cartId": 2
+    },
+    "CustomerAbandonedCart": {
+      "customerId": 1,
+      "cartId": 2
+    }
   },
-  "E: CustomerStartedShopping": {
-    "customerId": 1,
-    "cartId": 2
+  "Commands": {
+    "StartShopping": {
+      "customerId": 1
+    },
+    "AddProductToCart": {
+      "customerId": 1,
+      "cartId": 2
+    },
+    "RemoveProductFromCart": {
+      "customerId": 1,
+      "cartId": 2
+    },
+    "PlaceOrder": {
+      "customerId": 1,
+      "cartId": 2
+    },
+    "AbandonOrder": {
+      "customerId": 1,
+      "cartId": 2
+    }
   }
-]
+}
