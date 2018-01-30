@@ -6,11 +6,13 @@
     },
     "ProductWasAddedToCart": {
       "customerId": "string",
-      "cartId": "string"
+      "cartId": "string",
+      "productId": "string"
     },
     "ProductWasRemovedFromCart": {
       "customerId": "string",
-      "cartId": "string"
+      "cartId": "string",
+      "productId": "string"
     },
     "CustomerPlacedOrder": {
       "customerId": "string",
@@ -35,7 +37,8 @@
     },
     "RemoveProductFromCart": {
       "customerId": "string",
-      "cartId": "string"
+      "cartId": "string",
+      "productId": "string"
     },
     "PlaceOrder": {
       "customerId": "string",

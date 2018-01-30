@@ -5,6 +5,8 @@ This Command was generated from DSL.json
 */
 using Acme.Commands;
 namespace Acme.Commands {public class RemoveProductFromCart: Command {public string customerId {get;}
-public string cartId {get;}public RemoveProductFromCart (string customerIdArg, string cartIdArg) {customerId = customerIdArg;
-cartId = cartIdArg;}
+public string cartId {get;}
+public string productId {get;}public RemoveProductFromCart (string customerIdArg, string cartIdArg, string productIdArg) {customerId = customerIdArg;
+cartId = cartIdArg;
+productId = productIdArg;}
 }}

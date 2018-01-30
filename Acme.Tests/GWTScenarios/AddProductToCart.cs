@@ -13,10 +13,11 @@ namespace Acme.Tests
             var customerId = "";
             var startTime = "";
             var sku = "";
+            var productId = "";
 
             new Scenario()
                 .When(new AddProductToCart(customerId, cartId, sku, startTime))
-                .Then(new ProductWasAddedToCart(customerId, cartId))
+                .Then(new ProductWasAddedToCart(customerId, cartId, productId))
                 .Assert();
         }
         
@@ -27,13 +28,14 @@ namespace Acme.Tests
             var customerId = "";
             var startTime = "";
             var sku = "";
+            var productId = "";
 
             new Scenario()
-                .Given(new ProductWasAddedToCart(customerId, cartId))
-                .Given(new ProductWasAddedToCart(customerId, cartId))
-                .Given(new ProductWasAddedToCart(customerId, cartId))
+                .Given(new ProductWasAddedToCart(customerId, cartId, productId))
+                .Given(new ProductWasAddedToCart(customerId, cartId, productId))
+                .Given(new ProductWasAddedToCart(customerId, cartId, productId))
                 .When(new AddProductToCart(customerId, cartId, sku, startTime))
-                .Then(new ProductWasAddedToCart(customerId, cartId))
+                .Then(new ProductWasAddedToCart(customerId, cartId, productId))
                 .Assert();
         }
     }

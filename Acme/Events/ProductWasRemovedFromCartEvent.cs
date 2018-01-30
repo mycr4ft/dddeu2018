@@ -5,6 +5,8 @@ This Event was generated from DSL.json
 */
 using Acme.Events;
 namespace Acme.Events {public class ProductWasRemovedFromCart: Event {public string customerId {get;}
-public string cartId {get;}public ProductWasRemovedFromCart (string customerIdArg, string cartIdArg) {customerId = customerIdArg;
-cartId = cartIdArg;}
+public string cartId {get;}
+public string productId {get;}public ProductWasRemovedFromCart (string customerIdArg, string cartIdArg, string productIdArg) {customerId = customerIdArg;
+cartId = cartIdArg;
+productId = productIdArg;}
 }}
