@@ -14,7 +14,7 @@ const dslTypeToCs = (type) => {
 
 const createAttribute = (key, json) => {
     const type = dslTypeToCs(json);
-    return `public ${type} ${key} {get; private set;}`;
+    return `public ${type} ${key} {get; set;}`;
 }
 
 
