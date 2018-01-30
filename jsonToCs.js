@@ -8,7 +8,7 @@ const {Events, Commands} = json;
 const dslTypeToCs = (type) => {
     switch (type) {
         case "integer": return "int";
-        case "string": return "string";
+        case "string": return "String";
     }
 }
 

@@ -19,7 +19,7 @@ namespace Acme.Tests
         [Fact]
         public void Generate()
         {
-            using (var reader = File.OpenText(@"dsl.json"))
+            using (var reader = File.OpenText(@"./dsl.json"))
             {
                 var o = (JObject)JToken.ReadFrom(new JsonTextReader(reader));
                 
@@ -29,9 +29,17 @@ namespace Acme.Tests
                   
                     builder.AppendLine($"namespace Acme.Messages.{@namespace.Name} {{");
 
+
                     foreach (var @class in ((JObject)@namespace.Value).Properties())
                     {
-                        builder.AppendLine($"public class {@class.Name} {{");
+                        if (@namespace.Name == "Commands")
+                        {
+                            builder.AppendLine($"public class {@class.Name} : Command {{");
+                        }
+                        else
+                        {
+                            builder.AppendLine($"public class {@class.Name} : Event {{");
+                        }
 
                         foreach (var property in ((JObject) @class.Value).Properties())
                         {
