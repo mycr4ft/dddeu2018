@@ -8,7 +8,7 @@ const {Events, Commands} = json;
 const dslTypeToCs = (type) => {
     switch (type) {
         case "integer": return "int";
-        case "string": return "String";
+        case "string": return "string";
     }
 }
 
@@ -33,12 +33,12 @@ const createMessage = (key, json, type) => {
     cs += `This ${type} was generated from DSL.json\n`;
     cs += `*/\n`;
     if (type === "Command") {
-        cs += `using Acme.Command;\n`;
-        cs += `namespace Acme.Command.${key} {`;
+        cs += `using Acme.Commands;\n`;
+        cs += `namespace Acme.Commands.${key} {`;
         cs += `public class ${key}: Command {`;
     } else {
-        cs += `using Acme.Event;\n`;
-        cs += `namespace Acme.Event.${key} {`;
+        cs += `using Acme.Events;\n`;
+        cs += `namespace Acme.Events.${key} {`;
         cs += `public class ${key}: Event {`;
     }
     cs += createAttributes(json);
