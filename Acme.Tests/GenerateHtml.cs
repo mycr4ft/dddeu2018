@@ -170,11 +170,10 @@ namespace Acme.Tests
             foreach (var step in steps)
             {
                 builder.AppendLine($"<div class='sticky {@step.Type} like-paper'><h2>{@step.Title}</h2>");
-                builder.AppendLine($"<p></p>");
                 builder.AppendLine($"<table>");
                 step.Data.ToList().ForEach(pair =>
                 {
-                      builder.AppendLine($"<tr><td>{@pair.Key}</td><td>{@pair.Value}</td></tr>"); 
+                      builder.AppendLine($"<tr class='{@pair.Key}'><th>{@pair.Key}</th><td>{@pair.Value}</td></tr>"); 
                 });
                 builder.AppendLine($"</table>");
                 builder.AppendLine($"</div>");
