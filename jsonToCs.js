@@ -33,11 +33,14 @@ const createMessage = (key, json, type) => {
     cs += `This ${type} was generated from DSL.json\n`;
     cs += `*/`;
     if (type === "Command") {
+        cs += `using Acme.Command;\n`;
         cs += `namespace Acme.Command.${key} {`;
+        cs += `public class ${key}: Command {`;
     } else {
+        cs += `using Acme.Event;\n`;
         cs += `namespace Acme.Event.${key} {`;
+        cs += `public class ${key}: Event {`;
     }
-    cs += `public class ${key} {`;
     cs += createAttributes(json);
     cs += `}}`
     return cs;
