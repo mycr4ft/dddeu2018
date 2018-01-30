@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Acme.Tests
@@ -9,9 +10,7 @@ namespace Acme.Tests
         public static void Generate(string scenario, IEnumerable<Step> steps)
         {
             var builder = new StringBuilder();
-            foreach (var step in steps)
-            {
-                builder.AppendLine(@"<!DOCTYPE html>
+            builder.AppendLine(@"<!DOCTYPE html>
 <html lang='en'>
   <head>
     <meta charset='UTF-8' />
@@ -147,16 +146,16 @@ namespace Acme.Tests
         border-collapse: collapse;
       }
 
-      .event {
+      .event, .Event {
         background-color: orange;
       }
 
-      .command {
+      .command, .Command {
         background-color: deepskyblue;
         margin: 1ex 1ex 1ex 10ex;
       }
 
-      .hotspot {
+      .hotspot, .Hotspot {
         background-color: fuchsia;
       }
 
@@ -168,12 +167,23 @@ namespace Acme.Tests
   </head>
   <body class='like-paper'>
     <article class='scenario'>");
-                builder.AppendLine($"<div class='sticky like-paper'><h2 class='{@step.Type}'>{@step.Title}</h2>");
+            foreach (var step in steps)
+            {
+                builder.AppendLine($"<div class='sticky {@step.Type} like-paper'><h2>{@step.Title}</h2>");
+                builder.AppendLine($"<p></p>");
+                builder.AppendLine($"<table>");
+                step.Data.ToList().ForEach(pair =>
+                {
+                      builder.AppendLine($"<tr><td>{@pair.Key}</td><td>{@pair.Value}</td></tr>"); 
+                });
+                builder.AppendLine($"</table>");
                 builder.AppendLine($"</div>");
-                builder.AppendLine($"</body></html>");
-              
-              
-              builder.AppendLine(@"</article><script type='application/javascript'>
+            }
+
+            builder.AppendLine($"</body></html>");
+
+
+            builder.AppendLine(@"</article><script type='application/javascript'>
               document.addEventListener('DOMContentLoaded', function () {
                 var tableHeaders = document.querySelectorAll('tr[class] th');
 
@@ -201,7 +211,6 @@ namespace Acme.Tests
                 </body>
                 </html>
                 ");
-            }
             File.WriteAllText($"../../../Html/{@scenario}.html", builder.ToString());
         }
     }
