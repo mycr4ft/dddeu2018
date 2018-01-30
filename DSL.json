@@ -14,7 +14,7 @@
     },
     "CustomerPlacedOrder": {
       "customerId": "string",
-      "cartId": "string"
+      "orderId": "string"
     },
     "CustomerAbandonedCart": {
       "customerId": "string",

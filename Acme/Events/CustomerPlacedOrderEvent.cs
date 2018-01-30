@@ -5,6 +5,6 @@ This Event was generated from DSL.json
 */
 using Acme.Events;
 namespace Acme.Events {public class CustomerPlacedOrder: Event {public string customerId {get;}
-public string cartId {get;}public CustomerPlacedOrder (string customerIdArg, string cartIdArg) {customerId = customerIdArg;
-cartId = cartIdArg;}
+public string orderId {get;}public CustomerPlacedOrder (string customerIdArg, string orderIdArg) {customerId = customerIdArg;
+orderId = orderIdArg;}
 }}

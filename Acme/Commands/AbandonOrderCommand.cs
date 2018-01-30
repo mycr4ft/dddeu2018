@@ -4,16 +4,7 @@ Do not touch or risk the wrath of the ECUs
 This Command was generated from DSL.json
 */
 using Acme.Commands;
-namespace Acme.Commands
-{
-    public class AbandonOrder : Command
-    {
-        public string customerId { get; }
-        public string cartId { get; }
-        public AbandonOrder(string customerIdArg, string cartIdArg)
-        {
-            customerId = customerIdArg;
-            cartId = cartIdArg;
-        }
-    }
-}
+namespace Acme.Commands {public class AbandonOrder: Command {public string customerId {get;}
+public string cartId {get;}public AbandonOrder (string customerIdArg, string cartIdArg) {customerId = customerIdArg;
+cartId = cartIdArg;}
+}}
