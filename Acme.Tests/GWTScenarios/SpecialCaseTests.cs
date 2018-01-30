@@ -1,5 +1,6 @@
 ﻿using Acme.Commands;
 using Acme.Events;
+using Acme.Tests.FakeData;
 using Xunit;
 
 namespace Acme.Tests
@@ -10,12 +11,11 @@ namespace Acme.Tests
         public void SomethingRemovedFromCartOrderEmpty()
         {
             var cartId = "";
-            var customerId = "";
             var productId = "";
 
             new Scenario()
-                .Given(new ProductWasRemovedFromCart(customerId, cartId, productId))
-                .When(new PlaceOrder(customerId, cartId))
+                .Given(new ProductWasRemovedFromCart(Data.HappyCustomerId, cartId, productId))
+                .When(new PlaceOrder(Data.HappyCustomerId, cartId))
                 .ThenNothing()
                 .Assert();
         }

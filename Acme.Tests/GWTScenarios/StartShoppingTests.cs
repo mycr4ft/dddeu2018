@@ -1,5 +1,6 @@
 ﻿using Acme.Commands;
 using Acme.Events;
+using Acme.Tests.FakeData;
 using Xunit;
 
 namespace Acme.Tests
@@ -10,12 +11,11 @@ namespace Acme.Tests
         public void CustomerStartedShopping()
         {
             var cartId = "";
-            var customerId = "";
             var startTime = "";
 
             new Scenario()
-                .When(new StartShopping(cartId,customerId,startTime))
-                .Then(new CustomerStartedShopping(cartId, customerId))
+                .When(new StartShopping(cartId,Data.HappyCustomerId,startTime))
+                .Then(new CustomerStartedShopping(cartId, Data.HappyCustomerId))
                 .Assert();
         }
 
@@ -23,12 +23,11 @@ namespace Acme.Tests
         public void CustomerStartedShoppingTwice()
         {
             var cartId = "";
-            var customerId = "";
             var startTime = "";
 
             new Scenario()
-                .Given(new CustomerStartedShopping(cartId, customerId))
-                .When(new StartShopping(cartId, customerId, startTime))
+                .Given(new CustomerStartedShopping(cartId, Data.HappyCustomerId))
+                .When(new StartShopping(cartId, Data.HappyCustomerId, startTime))
                 .ThenNothing()
                 .Assert();
         }
