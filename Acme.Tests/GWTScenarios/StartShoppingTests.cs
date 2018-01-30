@@ -10,24 +10,22 @@ namespace Acme.Tests
         [Fact]
         public void CustomerStartedShopping()
         {
-            var cartId = "";
             var startTime = "";
 
             new Scenario()
-                .When(new StartShopping(cartId,Data.HappyCustomerId,startTime))
-                .Then(new CustomerStartedShopping(cartId, Data.HappyCustomerId))
+                .When(new StartShopping(Data.HappyCartId,Data.HappyCustomerId,startTime))
+                .Then(new CustomerStartedShopping(Data.HappyCartId, Data.HappyCustomerId))
                 .Assert();
         }
 
         [Fact]
         public void CustomerStartedShoppingTwice()
         {
-            var cartId = "";
             var startTime = "";
 
             new Scenario()
-                .Given(new CustomerStartedShopping(cartId, Data.HappyCustomerId))
-                .When(new StartShopping(cartId, Data.HappyCustomerId, startTime))
+                .Given(new CustomerStartedShopping(Data.HappyCartId, Data.HappyCustomerId))
+                .When(new StartShopping(Data.HappyCartId, Data.HappyCustomerId, startTime))
                 .ThenNothing()
                 .Assert();
         }

@@ -10,12 +10,11 @@ namespace Acme.Tests
         [Fact]
         public void SomethingRemovedFromCartOrderEmpty()
         {
-            var cartId = "";
             var productId = "";
 
             new Scenario()
-                .Given(new ProductWasRemovedFromCart(Data.HappyCustomerId, cartId, productId))
-                .When(new PlaceOrder(Data.HappyCustomerId, cartId))
+                .Given(new ProductWasRemovedFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
+                .When(new PlaceOrder(Data.HappyCustomerId, Data.HappyCartId))
                 .ThenNothing()
                 .Assert();
         }
