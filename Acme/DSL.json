@@ -1,45 +1,46 @@
 {
   "Events": {
     "CustomerStartedShopping": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "ProductWasAddedToCart": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "ProductWasRemovedFromCart": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "CustomerPlacedOrder": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "CustomerAbandonedCart": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     }
   },
   "Commands": {
     "StartShopping": {
-      "customerId": 1
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "AddProductToCart": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "RemoveProductFromCart": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "PlaceOrder": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     },
     "AbandonOrder": {
-      "customerId": 1,
-      "cartId": 2
+      "customerId": "String",
+      "cartId": "Integer"
     }
   }
 }
