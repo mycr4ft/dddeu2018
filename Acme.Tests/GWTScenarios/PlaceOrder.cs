@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Acme.Commands;
+﻿using Acme.Commands;
 using Acme.Events;
 using Acme.Tests.FakeData;
 using Xunit;
