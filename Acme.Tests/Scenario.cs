@@ -9,9 +9,11 @@ namespace Acme.Tests
     {
         private readonly string _name;
         private readonly List<Step> _steps = new List<Step>();
+        private readonly EventStore _eventStore;
 
-        public Scenario(string name="temp")
+        public Scenario(EventStore eventStore, string name)
         {
+            _eventStore = eventStore;
             _name = name;
         }
 
@@ -28,6 +30,7 @@ namespace Acme.Tests
                             .ToDictionary(x=>x.Name, x =>x.GetValue(anEvent).ToString())
 
             });
+            _eventStore.Add(anEvent.AggregateId(), new List<Event> {anEvent});
             return this;
         }
 
@@ -60,6 +63,7 @@ namespace Acme.Tests
                         .ToDictionary(x => x.Name, x => x.GetValue(anEvent).ToString())
 
                 });
+            _eventStore.Add(anEvent.AggregateId(), new List<Event> {anEvent});
             return this;
         }
 

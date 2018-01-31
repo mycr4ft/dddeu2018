@@ -23,7 +23,6 @@ namespace Acme
         
         public void Add(string streamId, IReadOnlyList<Event> events)
         {
-            
             if (_store.ContainsKey(streamId))
             {
                 _store[streamId].Concat(events.ToList());
