@@ -7,20 +7,12 @@ namespace Acme.Tests
 {
     [TestFixture]
     public class RemoveProductFromCartTests : SetupTests {
-        private EventStore _eventStore;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _eventStore = SetupTests.EventStoreCreator();
-        }
-
         [Test]
         public void NothingCouldBeRemovedFromCard()
         {
             var productId = "";
 
-            new Scenario(_eventStore, "NothingCouldBeRemovedFromCard")
+            new Scenario(EventStore, "NothingCouldBeRemovedFromCard")
                 .When(new RemoveProductFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .ThenNothing()
                 .Assert();
@@ -31,7 +23,7 @@ namespace Acme.Tests
         {
             var productId = "";
 
-            new Scenario(_eventStore, "OneThingRemovedFromCart")
+            new Scenario(EventStore, "OneThingRemovedFromCart")
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .When(new RemoveProductFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Then(new ProductWasRemovedFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))

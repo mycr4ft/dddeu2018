@@ -8,18 +8,10 @@ namespace Acme.Tests
     [TestFixture]
     public class PlaceOrderOnCart : SetupTests
     {
-        private EventStore _eventStore;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _eventStore = SetupTests.EventStoreCreator();
-        }
-        
         [Test]
         public void PlaceOrderOnExistingCart()
         {
-            new Scenario(_eventStore, "PlaceOrderOnExistingCart")
+            new Scenario(EventStore, "PlaceOrderOnExistingCart")
                 .When(new PlaceOrder(Data.HappyCustomerId, Data.HappyCartId))
                 .Then(new CustomerPlacedOrder(Data.HappyCustomerId, Data.HappyOrdId, Data.HappyCartId))
                 .Assert();
@@ -28,7 +20,7 @@ namespace Acme.Tests
         [Test]
         public void PlaceOrderOnAbandonedCart()
         {
-            new Scenario(_eventStore, "PlaceOrderOnAbandonedCart")
+            new Scenario(EventStore, "PlaceOrderOnAbandonedCart")
                 .Given(new CustomerAbandonedCart(Data.HappyCustomerId, Data.HappyCartId))
                 .When(new PlaceOrder(Data.HappyCustomerId, Data.HappyCartId))
                 .ThenNothing()

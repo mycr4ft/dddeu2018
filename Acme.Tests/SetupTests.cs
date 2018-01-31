@@ -6,23 +6,14 @@ namespace Acme.Tests
     [TestFixture]
     public class SetupTests
     {
-        public delegate EventStore NewEventStore();
+        public EventStore EventStore;
 
-        public static NewEventStore EventStoreCreator;
-        
-        [OneTimeSetUp]
-        public void Init()
+        [SetUp]
+        public void SetUp()
         {
-            NewEventStore n = new NewEventStore(NewInMemoryEventstore);
-            EventStoreCreator = n;
-        }
-
-        private EventStore NewInMemoryEventstore()
-        {
-            return new InMemoryEventStore();
+            EventStore = new InMemoryEventStore();
         }
         
-
         [OneTimeTearDown]
         public void Cleanup()
         {

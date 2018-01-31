@@ -8,20 +8,13 @@ namespace Acme.Tests
     [TestFixture]
     public class AddProductToCartTest: SetupTests
     {
-        private EventStore _eventStore;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _eventStore = SetupTests.EventStoreCreator();
-        }
         [Test]
         public void FirstProductWasAddedToCart()
         {
             var startTime = "";
             var sku = "";
             var productId = "";
-            new Scenario(_eventStore, "FirstProductWasAddedToCart")
+            new Scenario(EventStore, "FirstProductWasAddedToCart")
                 .When(new AddProductToCart(Data.HappyCustomerId, Data.HappyCartId, sku, startTime))
                 .Then(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Assert();
@@ -33,7 +26,7 @@ namespace Acme.Tests
             var startTime = "";
             var sku = "";
             var productId = "";
-            new Scenario(_eventStore, "MultipleProductsAddedToCart")
+            new Scenario(EventStore, "MultipleProductsAddedToCart")
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
                 .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
