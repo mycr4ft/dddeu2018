@@ -43,7 +43,7 @@ namespace Acme.Tests
         {
             foreach (var scenarioStepse in _scenarioStepses)
             {
-                GenerateHtml.Generate(scenarioStepse.Name, scenarioStepse.Steps);
+                GenerateScenarioHtml.Generate(scenarioStepse.Name, scenarioStepse.Steps);
             }
         }
     }

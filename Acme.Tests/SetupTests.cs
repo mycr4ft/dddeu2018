@@ -8,7 +8,7 @@ namespace Acme.Tests
     {
         public EventStore EventStore;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             EventStore = new InMemoryEventStore();
@@ -18,6 +18,7 @@ namespace Acme.Tests
         public void Cleanup()
         {
             StepsReporter.Instance().Build();
+            GenerateStreamHtml.Generate(EventStore);
         }
     }
 }

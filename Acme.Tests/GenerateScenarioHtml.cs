@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Acme.Tests
 {
-    public static class GenerateHtml
+    public static class GenerateScenarioHtml
     {
         public static void Generate(string scenario, IEnumerable<Step> steps)
         {
