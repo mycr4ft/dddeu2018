@@ -13,5 +13,6 @@ namespace Acme.Tests.FakeData
         {
             return $"HappyCart-{Guid.NewGuid()}";
         }
+        public static string FunnyProductId = "FunnyProduct-123";
     }
 }
