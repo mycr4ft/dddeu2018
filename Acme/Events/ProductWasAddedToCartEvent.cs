@@ -9,4 +9,4 @@ public string cartId {get;}
 public string productId {get;}public ProductWasAddedToCart (string customerIdArg, string cartIdArg, string productIdArg) {customerId = customerIdArg;
 cartId = cartIdArg;
 productId = productIdArg;}
-}}
+public string AggregateId() { return cartId;}}}

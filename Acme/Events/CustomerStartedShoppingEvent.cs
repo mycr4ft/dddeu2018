@@ -7,4 +7,4 @@ using Acme.Events;
 namespace Acme.Events {public class CustomerStartedShopping: Event {public string customerId {get;}
 public string cartId {get;}public CustomerStartedShopping (string customerIdArg, string cartIdArg) {customerId = customerIdArg;
 cartId = cartIdArg;}
-}}
+public string AggregateId() { return cartId;}}}

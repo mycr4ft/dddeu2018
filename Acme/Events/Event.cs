@@ -6,5 +6,6 @@ namespace Acme.Events
 {
     public interface Event
     {
+        string AggregateId();
     }
 }

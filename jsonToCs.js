@@ -19,10 +19,10 @@ const createAttribute = (key, json) => {
 
 
 const createAttributes = (json) => {
-    const attributes = Object.keys(json).map((key) => {
+    return attributes = Object.keys(json).map((key) => {
+        if (key === "aggregateId") return "";
         return createAttribute(key, json[key]);
-    });
-    return attributes.join("\n");
+    }).filter(x => x !== "").join("\n");
 }
 
 const createConstructor = (json, name) => {
@@ -33,15 +33,24 @@ const createConstructor = (json, name) => {
         return `${type} ${name}Arg`;
     }
     const attributes = Object.keys(json).map((key) => {
+        if (key === "aggregateId") return "";
         return createConstructorArgument(key, json[key]);
-    });
+    }).filter(x => x !== "");
     result += attributes.join(", ");
     result += `) {`;
     const constructorBody = Object.keys(json).map((key) => {
+        if (key === "aggregateId") return "";
         return `${key} = ${key}Arg;`;
-    }).join("\n");
+    }).filter(x => x !== "").join("\n");
+    const aggregateId = Object.keys(json).map((key) => {
+        if (key === "aggregateId") {
+            return `public string AggregateId() { return ${json[key]};}`
+        }
+        return "";
+    }).filter(x => x !== "").join("\n");
     result += constructorBody;
     result += `}\n`;
+    result += aggregateId;
     return result;
 }
 

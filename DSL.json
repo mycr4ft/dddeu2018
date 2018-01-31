@@ -2,25 +2,31 @@
   "Events": {
     "CustomerStartedShopping": {
       "customerId": "string",
-      "cartId": "string"
+      "cartId": "string",
+      "aggregateId": "cartId"
     },
     "ProductWasAddedToCart": {
       "customerId": "string",
       "cartId": "string",
-      "productId": "string"
+      "productId": "string",
+      "aggregateId": "cartId"
     },
     "ProductWasRemovedFromCart": {
       "customerId": "string",
       "cartId": "string",
-      "productId": "string"
+      "productId": "string",
+      "aggregateId": "cartId"
     },
     "CustomerPlacedOrder": {
       "customerId": "string",
-      "orderId": "string"
+      "orderId": "string",
+      "cartId": "string",
+      "aggregateId": "cartId"
     },
     "CustomerAbandonedCart": {
       "customerId": "string",
-      "cartId": "string"
+      "cartId": "string",
+      "aggregateId": "cartId"
     }
   },
   "Commands": {
