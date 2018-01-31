@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Acme.Commands;
 using Acme.Events;
-using Xunit;
 
 namespace Acme.Tests
 {
@@ -81,7 +78,8 @@ namespace Acme.Tests
 
         public void Assert()
         {
-            GenerateHtml.Generate(_name, _steps);
+            var scenarioSteps = new ScenarioSteps(_steps, _name);
+            StepsReporter.Instance().Add(scenarioSteps);
             Xunit.Assert.True(false);
         }
     }
