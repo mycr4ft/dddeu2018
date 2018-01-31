@@ -11,9 +11,10 @@ namespace Acme.Tests
         public void NothingCouldBeRemovedFromCard()
         {
             var productId = "";
+            var cartId = Data.BuildHappyCartId();
 
             new Scenario(EventStore, "NothingCouldBeRemovedFromCard")
-                .When(new RemoveProductFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
+                .When(new RemoveProductFromCart(Data.HappyCustomerId, cartId, productId))
                 .ThenNothing()
                 .Assert();
         }
@@ -22,11 +23,12 @@ namespace Acme.Tests
         public void OneThingRemovedFromCart()
         {
             var productId = "";
+            var cartId = Data.BuildHappyCartId();
 
             new Scenario(EventStore, "OneThingRemovedFromCart")
-                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
-                .When(new RemoveProductFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
-                .Then(new ProductWasRemovedFromCart(Data.HappyCustomerId, Data.HappyCartId, productId))
+                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, cartId, productId))
+                .When(new RemoveProductFromCart(Data.HappyCustomerId, cartId, productId))
+                .Then(new ProductWasRemovedFromCart(Data.HappyCustomerId, cartId, productId))
                 .Assert();
         }
     }

@@ -12,10 +12,11 @@ namespace Acme.Tests
         public void CustomerStartedShopping()
         {
             var startTime = "";
+            var cartId = Data.BuildHappyCartId();
 
             new Scenario(EventStore, "CustomerStartedShopping")
-                .When(new Commands.StartShopping(Data.HappyCartId,Data.HappyCustomerId,startTime))
-                .Then(new CustomerStartedShopping(Data.HappyCartId, Data.HappyCustomerId))
+                .When(new Commands.StartShopping(Data.HappyCustomerId,cartId,startTime))
+                .Then(new CustomerStartedShopping(Data.HappyCustomerId, cartId))
                 .Assert();
         }
 
@@ -23,10 +24,11 @@ namespace Acme.Tests
         public void CustomerStartedShoppingTwice()
         {
             var startTime = "";
+            var cartId = Data.BuildHappyCartId();
 
             new Scenario(EventStore, "CustomerStartedShoppingTwice")
-                .Given(new CustomerStartedShopping(Data.HappyCartId, Data.HappyCustomerId))
-                .When(new Commands.StartShopping(Data.HappyCartId, Data.HappyCustomerId, startTime))
+                .Given(new CustomerStartedShopping(Data.HappyCustomerId, cartId))
+                .When(new Commands.StartShopping(Data.HappyCustomerId, cartId, startTime))
                 .ThenNothing()
                 .Assert();
         }

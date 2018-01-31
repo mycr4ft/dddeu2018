@@ -11,18 +11,20 @@ namespace Acme.Tests
         [Test]
         public void PlaceOrderOnExistingCart()
         {
+            var cartId = Data.BuildHappyCartId();
             new Scenario(EventStore, "PlaceOrderOnExistingCart")
-                .When(new PlaceOrder(Data.HappyCustomerId, Data.HappyCartId))
-                .Then(new CustomerPlacedOrder(Data.HappyCustomerId, Data.HappyOrdId, Data.HappyCartId))
+                .When(new PlaceOrder(Data.HappyCustomerId, cartId))
+                .Then(new CustomerPlacedOrder(Data.HappyCustomerId, Data.HappyOrdId, cartId))
                 .Assert();
         }
 
         [Test]
         public void PlaceOrderOnAbandonedCart()
         {
+            var cartId = Data.BuildHappyCartId();
             new Scenario(EventStore, "PlaceOrderOnAbandonedCart")
-                .Given(new CustomerAbandonedCart(Data.HappyCustomerId, Data.HappyCartId))
-                .When(new PlaceOrder(Data.HappyCustomerId, Data.HappyCartId))
+                .Given(new CustomerAbandonedCart(Data.HappyCustomerId, cartId))
+                .When(new PlaceOrder(Data.HappyCustomerId, cartId))
                 .ThenNothing()
                 .Assert();
         }

@@ -14,9 +14,10 @@ namespace Acme.Tests
             var startTime = "";
             var sku = "";
             var productId = "";
+            var cartId = Data.BuildHappyCartId();
             new Scenario(EventStore, "FirstProductWasAddedToCart")
-                .When(new AddProductToCart(Data.HappyCustomerId, Data.HappyCartId, sku, startTime))
-                .Then(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
+                .When(new AddProductToCart(Data.HappyCustomerId, cartId, sku, startTime))
+                .Then(new ProductWasAddedToCart(Data.HappyCustomerId, cartId, productId))
                 .Assert();
         }
         
@@ -26,12 +27,13 @@ namespace Acme.Tests
             var startTime = "";
             var sku = "";
             var productId = "";
+            var cartId = Data.BuildHappyCartId();
             new Scenario(EventStore, "MultipleProductsAddedToCart")
-                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
-                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
-                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
-                .When(new AddProductToCart(Data.HappyCustomerId, Data.HappyCartId, sku, startTime))
-                .Then(new ProductWasAddedToCart(Data.HappyCustomerId, Data.HappyCartId, productId))
+                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, cartId, productId))
+                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, cartId, productId))
+                .Given(new ProductWasAddedToCart(Data.HappyCustomerId, cartId, productId))
+                .When(new AddProductToCart(Data.HappyCustomerId, cartId, sku, startTime))
+                .Then(new ProductWasAddedToCart(Data.HappyCustomerId, cartId, productId))
                 .Assert();
         }
     }
