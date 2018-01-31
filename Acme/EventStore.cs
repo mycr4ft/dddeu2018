@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Acme.Events;
+using Newtonsoft.Json;
 
 namespace Acme
 {
@@ -10,6 +12,8 @@ namespace Acme
         void Add(string streamId, IReadOnlyList<Event> events);
 
         IReadOnlyList<Event> ReadStream(string streamId);
+
+        IEnumerable<string> GetStreamIds();
     }
 
     public class InMemoryEventStore : EventStore
@@ -40,6 +44,11 @@ namespace Acme
                 return _store[streamId].ToList();
             }
             throw new ArgumentException("Stream not found");
+        }
+
+        public IEnumerable<string> GetStreamIds()
+        {
+            return _store.Keys;
         }
     }
 }

@@ -9,5 +9,6 @@
         public static string GrumpyCartId = "Grumpy cart";
 
         public static string HappyOrdId = "Happy order";
+        public static string FunnyProductId = "FunnyProduct-123";
     }
 }
