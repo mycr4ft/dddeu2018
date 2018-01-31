@@ -1,13 +1,15 @@
 ﻿using Acme.Commands;
 using Acme.Events;
 using Acme.Tests.FakeData;
+using NUnit.Framework;
 using Xunit;
 
 namespace Acme.Tests
 {
+    [TestFixture]
     public class StartShopping {
 
-        [Fact]
+        [Test]
         public void CustomerStartedShopping()
         {
             var startTime = "";
@@ -18,7 +20,7 @@ namespace Acme.Tests
                 .Assert();
         }
 
-        [Fact]
+        [Test]
         public void CustomerStartedShoppingTwice()
         {
             var startTime = "";

@@ -1,13 +1,14 @@
 ﻿using Acme.Commands;
 using Acme.Events;
 using Acme.Tests.FakeData;
-using Xunit;
+using NUnit.Framework;
 
 namespace Acme.Tests
 {
+    [TestFixture]
     public class PlaceOrderOnCart
     {
-        [Fact]
+        [Test]
         public void PlaceOrderOnExistingCart()
         {
             new Scenario("PlaceOrderOnExistingCart")
@@ -16,7 +17,7 @@ namespace Acme.Tests
                 .Assert();
         }
 
-        [Fact]
+        [Test]
         public void PlaceOrderOnAbandonedCart()
         {
             new Scenario("PlaceOrderOnAbandonedCart")

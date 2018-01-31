@@ -1,13 +1,14 @@
 ﻿using Acme.Commands;
 using Acme.Events;
 using Acme.Tests.FakeData;
-using Xunit;
+using NUnit.Framework;
 
 namespace Acme.Tests
 {
+    [TestFixture]
     public class AddProductToCartTest {
 
-        [Fact]
+        [Test]
         public void FirstProductWasAddedToCart()
         {
             var startTime = "";
@@ -19,7 +20,7 @@ namespace Acme.Tests
                 .Assert();
         }
         
-        [Fact]
+        [Test]
         public void MultipleProductsAddedToCart()
         {
             var startTime = "";

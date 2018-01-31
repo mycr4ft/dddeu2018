@@ -1,13 +1,14 @@
 ﻿using Acme.Commands;
 using Acme.Events;
 using Acme.Tests.FakeData;
-using Xunit;
+using NUnit.Framework;
 
 namespace Acme.Tests
 {
+    [TestFixture]
     public class RemoveProductFromCartTests {
 
-        [Fact]
+        [Test]
         public void NothingCouldBeRemovedFromCard()
         {
             var productId = "";
@@ -18,7 +19,7 @@ namespace Acme.Tests
                 .Assert();
         }
         
-        [Fact]
+        [Test]
         public void OneThingRemovedFromCart()
         {
             var productId = "";
